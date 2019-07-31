@@ -31,4 +31,4 @@ RUN apk --no-cache --update add \
       && \
     chmod +x /usr/local/bin/swagger \
       && \
-    npm install -g angular-cli
+    npm i -g @angular/cli@7.3.9
