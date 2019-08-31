@@ -28,8 +28,10 @@ RUN apk --no-cache --update add \
       && \
     wget https://github.com/go-swagger/go-swagger/releases/download/v0.19.0/swagger_linux_amd64 -O /usr/local/bin/swagger \
       && \
-    chmod +x /usr/local/bin/swagger \
+    chmod +x /usr/local/bin/swagger
+
+RUN wget http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.8/swagger-codegen-cli-2.4.8.jar -O /usr/local/bin/swagger-codegen.jar \
       && \
-    wget http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.8/swagger-codegen-cli-2.4.8.jar -O /usr/local/bin/swagger-codegen \
-      && \
-    chmod +x /usr/local/bin/swagger-codegen
+    chmod +x /usr/local/bin/swagger-codegen.jar
+
+RUN echo 'alias swagger-codegen="java -jar /usr/local/bin/swagger-codegen.jar"' >> ~/.bashrc
