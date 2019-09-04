@@ -34,4 +34,4 @@ RUN wget http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.8/sw
       && \
     chmod +x /usr/local/bin/swagger-codegen.jar
 
-RUN echo 'alias swagger-codegen="java -jar /usr/local/bin/swagger-codegen.jar"' >> ~/.bashrc
+RUN echo 'alias "swagger-codegen"="java -jar /usr/local/bin/swagger-codegen.jar"' >> ~/.bashrc
