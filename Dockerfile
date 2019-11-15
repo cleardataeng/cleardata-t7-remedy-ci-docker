@@ -6,7 +6,7 @@ RUN apk --no-cache --update add \
         gcc \
         curl \
         git \
-	      openjdk8-jre \
+	openjdk8-jre \
         openssh \
         openssh-client \
         openssl \
@@ -32,12 +32,6 @@ RUN git clone https://github.com/tfutils/tfenv.git ${HOME}/.tfenv && \
 RUN tfenv install 0.11.14 && \
     tfenv install 0.12.6 && \ 
     tfenv install 0.12.10 && \ 
-    tfenv install 0.12.12 
-
-RUN wget http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.8/swagger-codegen-cli-2.4.8.jar -O /usr/local/bin/swagger-codegen.jar \
-      && \
-    chmod +x /usr/local/bin/swagger-codegen.jar
-
-RUN echo 'exec java -jar /usr/local/bin/swagger-codegen.jar "$@"' >> /usr/local/bin/swagger-codegen \
-      && \
-    chmod +x /usr/local/bin/swagger-codegen
+    tfenv install 0.12.12
+    
+RUN tfenv use 0.12.12
