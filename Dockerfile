@@ -1,6 +1,8 @@
 FROM golang:1.13-alpine
 
 RUN apk --no-cache --update add \
+	autoconf \
+	automake \
         bash \
         build-base \
         gcc \
@@ -21,6 +23,7 @@ RUN apk --no-cache --update add \
         mailcap \
         nodejs \
         nodejs-npm \
+	zlib-dev \
         && \
     pip install --upgrade awscli==1.16.228 s3cmd==2.0.1 python-magic && \
     wget https://github.com/go-swagger/go-swagger/releases/download/v0.21.0/swagger_linux_amd64 -O /usr/local/bin/swagger && \
