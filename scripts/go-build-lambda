@@ -1,16 +1,11 @@
 #!/usr/bin/env bash
 
-LDFlags :=
-ifeq ($(OS),Windows_NT)
-else
-	UNAME_S := $(shell uname -s)
-	ifeq ($(UNAME_S),Linux)
-		CPFlags += -Lr
-		LDFlags += -ldflags="-linkmode external -extldflags -static -s -w"
-	endif
-	ifeq ($(UNAME_S),Darwin)
-		CPFlags += -r
-	endif
-endif
+export LDFlags=""
+if [[ "$OS" == "Windows_NT" ]]; then
+	UNAME_S=$(shell uname -s)
+	if [[ "$UNAME_S" == "Linux" ]]; then
+		LDFlags=-ldflags="-linkmode external -extldflags -static -s -w"
+	fi
+fi
 
-GOOS=linux GOARCH=amd64 go build $(LDFlags) -tags netgo --installsuffix netgo "$@"
+GOOS=linux GOARCH=amd64 go build $LDFlags -tags netgo --installsuffix netgo "$@"
