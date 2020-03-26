@@ -40,3 +40,6 @@ RUN tfenv install 0.11.14 && \
     tfenv install 0.12.12
     
 RUN tfenv use 0.12.12
+
+COPY scripts/go-build-lambda /usr/local/bin
+
