@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
 export LDFlags=""
-if [[ "$OS" == "Windows_NT" ]]; then
-	UNAME_S=$(shell uname -s)
+export LDFlagPrefix=""
+if [[ "$OS" != "Windows_NT" ]]; then
+	UNAME_S=$(uname -s)
 	if [[ "$UNAME_S" == "Linux" ]]; then
-		LDFlags=-ldflags="-linkmode external -extldflags -static -s -w"
+	  LDFlagPrefix=-ldflags=
+		LDFlags="-linkmode external -extldflags -static -s -w"
 	fi
 fi
+echo "Building with flags: $LDFlags"
 
-GOOS=linux GOARCH=amd64 go build $LDFlags -tags netgo --installsuffix netgo "$@"
+GOOS=linux GOARCH=amd64 go build $LDFlagPrefix"$LDFlags" -tags netgo --installsuffix netgo "$@"
