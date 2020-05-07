@@ -16,7 +16,7 @@ RUN wget https://github.com/go-swagger/go-swagger/releases/download/v$GOSWAGGER_
 
 # Install required node version
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-RUN bash -c "source ~/.nvm/nvm.sh && nvm install $NODE_VER && nvm use --delete-prefix $NODE_VER"
+RUN bash -c "source ~/.nvm/nvm.sh && nvm install $NODE_VER && nvm use --delete-prefix $NODE_VER && nvm alias default $NODE_VER"
 
 RUN GO111MODULE=on go get github.com/mikefarah/yq/v3
 
