@@ -1,7 +1,5 @@
 FROM cleardata/bionic
 
-ENV BASH_ENV "/root/.bashrc"
-
 ENV GOSWAGGER_VER 0.21.0
 ENV NODE_VER 10.17.0
 ENV TERRAFORM_VER 0.12.12
@@ -31,3 +29,7 @@ RUN tfenv install 0.11.14 && \
     tfenv install 0.12.10 && \ 
     tfenv install $TERRAFORM_VER
 RUN tfenv use $TERRAFORM_VER
+
+ENV PATH /root/.nvm/versions/node/v10.17.0/bin:/go/bin:/usr/local/go/bin:$PATH
+
+ENTRYPOINT /bin/bash
