@@ -1,5 +1,7 @@
 FROM cleardata/bionic
 
+ENV BASH_ENV "/root/.bashrc"
+
 ENV GOSWAGGER_VER 0.21.0
 ENV NODE_VER 10.17.0
 ENV TERRAFORM_VER 0.12.12
