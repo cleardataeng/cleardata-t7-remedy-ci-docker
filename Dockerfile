@@ -19,6 +19,8 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 RUN bash -c "source ~/.nvm/nvm.sh && nvm install $NODE_VER && nvm use --delete-prefix $NODE_VER && nvm alias default $NODE_VER"
 
 RUN GO111MODULE=on go get github.com/mikefarah/yq/v3
+RUN GO111MODULE=on go get github.com/golang/mock/mockgen 
+RUN GO111MODULE=on go get github.com/golang/mock/gomock
 
 # Remove existing TF and use tfenv
 RUN rm $(which terraform)
