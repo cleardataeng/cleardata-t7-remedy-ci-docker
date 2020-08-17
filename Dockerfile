@@ -18,9 +18,24 @@ RUN wget https://github.com/go-swagger/go-swagger/releases/download/v$GOSWAGGER_
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 RUN bash -c "source ~/.nvm/nvm.sh && nvm install $NODE_VER && nvm use --delete-prefix $NODE_VER && nvm alias default $NODE_VER"
 
+# Install commonly-used go packages
 RUN GO111MODULE=on go get github.com/mikefarah/yq/v3
 RUN GO111MODULE=on go get github.com/golang/mock/mockgen 
 RUN GO111MODULE=on go get github.com/golang/mock/gomock
+
+RUN GO111MODULE=on go get github.com/aws/aws-lambda-go
+RUN GO111MODULE=on go get github.com/aws/aws-sdk-go
+RUN GO111MODULE=on go get github.com/aws/aws-xray-sdk-go
+RUN GO111MODULE=on go get github.com/go-openapi/errors
+RUN GO111MODULE=on go get github.com/go-openapi/loads
+RUN GO111MODULE=on go get github.com/go-openapi/runtime
+RUN GO111MODULE=on go get github.com/go-openapi/spec
+RUN GO111MODULE=on go get github.com/go-openapi/strfmt
+RUN GO111MODULE=on go get github.com/go-openapi/swag
+RUN GO111MODULE=on go get github.com/go-openapi/validate
+RUN GO111MODULE=on go get github.com/sirupsen/logrus
+RUN GO111MODULE=on go get github.com/spf13/cobra
+RUN GO111MODULE=on go get github.com/spf13/viper
 
 # Remove existing TF and use tfenv
 RUN rm $(which terraform)
