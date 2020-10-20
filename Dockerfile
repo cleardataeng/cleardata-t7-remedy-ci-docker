@@ -8,7 +8,8 @@ RUN apt-get -q update && \
 	DEBIAN_FRONTEND=noninteractive apt-get -q install -y \
 	autoconf \
 	openjdk-8-jdk \
-	groff
+	groff \
+    rsync
 
 # Go-Swagger install
 RUN wget https://github.com/go-swagger/go-swagger/releases/download/v$GOSWAGGER_VER/swagger_linux_amd64 -O /usr/local/bin/swagger && \
