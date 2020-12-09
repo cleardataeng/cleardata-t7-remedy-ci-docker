@@ -45,6 +45,8 @@ RUN git clone https://github.com/tfutils/tfenv.git ${HOME}/.tfenv && \
 RUN tfenv install 0.11.14 && \
     tfenv install 0.12.6 && \ 
     tfenv install 0.12.10 && \ 
+    tfenv install 0.12.12 && \ 
+    tfenv install 0.12.28 && \ 
     tfenv install $TERRAFORM_VER
 RUN tfenv use $TERRAFORM_VER
 
