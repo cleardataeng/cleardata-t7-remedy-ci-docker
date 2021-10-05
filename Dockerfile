@@ -2,7 +2,7 @@ FROM cleardata/bionic
 
 ENV GOSWAGGER_VER 0.21.0
 ENV NODE_VER 10.17.0
-ENV TERRAFORM_VER 0.12.12
+ENV TERRAFORM_VER 1.0.8
 
 RUN apt-get -q update && \
 	DEBIAN_FRONTEND=noninteractive apt-get -q install -y \
